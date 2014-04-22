@@ -1,9 +1,9 @@
 #!/bin/env ruby
 # encoding: utf-8
-header='<!DOCTYPE html>
+template='<!DOCTYPE html>
 <html>
 <head>
-	<title>Maria Bozhkova</title>
+	<title> %{first_name} %{last_name} </title>
 	<style>
 	    body {
 		    font-family:Comic Sans MS;
@@ -17,11 +17,7 @@ header='<!DOCTYPE html>
 	    img{max-width: 70px;}
 	</style>
 </head>
-<body><h1>'
-name='Мария Божкова'
-name_en='Maria Bozhkova'
-footer='
-	</h1><p>
+<body><h1>%{first_name} %{last_name}</h1><p>
 		"Better to be the one who smiled than the one
 		who didn\'t smile back!"
 	</p>
@@ -35,7 +31,9 @@ footer='
 	</span>
 </body>
 </html>'
-File.write "C:/Users/mimi/Documents/GitHub/mmrawr.github.io/bg/indexbg.html", header + name + footer
-File.write "C:/Users/mimi/Documents/GitHub/mmrawr.github.io/en/indexen.html", header + name_en + footer
-
-
+bg_translations={first_name:'Мария', last_name:'Божкова'}
+en_translations={first_name:'Maria', last_name:'Bozhkova'}
+bg=template%bg_translations
+en=template%en_translations
+File.write "bg/indexbg.html", bg
+File.write "en/indexen.html", en
